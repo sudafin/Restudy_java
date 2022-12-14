@@ -1,5 +1,5 @@
 package com.day6;
-/*
+/**
   异常Exception：1、异常事件两大类 a、Error（Stackoverflow，out of memory） b、Exception：编译异常和运行异常
                 2、try{ 执行的主程序是否有异常 }catch(){ 如果有异常就抛出异常 }finally{ 不管有没有异常都要执行 }
                  如果要catch多个异常，需要将父类Exception放在后面；

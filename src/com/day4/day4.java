@@ -1,5 +1,5 @@
 package com.day4;
-/*
+/**
     ①equals与==的区别：==表示的地址是否相同，equals表示的是引用是否相同
     ②static:同一个类的不同对象都可以调用，遵循修饰符的原则，public static int =1
       or public static void play()->不能用this;

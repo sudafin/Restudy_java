@@ -1,6 +1,6 @@
 package com.day5;
 
-/*
+/**
     ①abstract：a、不能被new实例化,也没有实体 eg:；public abstract void test();没有{}；
                b、只能修饰方法和类，不能修饰属性；是可以有静态方法和属性的
                c、要修饰方法时，类必须也被修饰；而类被修饰时，方法可以不是抽象
