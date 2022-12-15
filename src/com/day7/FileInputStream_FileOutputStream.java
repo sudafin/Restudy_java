@@ -13,6 +13,7 @@ public class FileInputStream_FileOutputStream {
     public void FileOutputStream_() throws IOException {//程序-文件
         String pathName = "src\\com\\day7\\testText.text";
         FileOutputStream fileoutputStream = new FileOutputStream(pathName);//自动创建文件不需要手动创建
+        //如果在pathName后追加true，就可以在源文件下追加文字
         String str = "hello,world";
         fileoutputStream.write(str.getBytes(),0,str.length());
         System.out.println("文件写入创建成功");
