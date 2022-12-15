@@ -11,7 +11,7 @@ public class FileInputStream_FileOutputStream {
         fileInputStreamFileOutputStream.CopyImg();//复制图片
     }
     public void FileOutputStream_() throws IOException {//程序-文件
-        String pathName = "src\\com\\day7\\testText.text";
+        String pathName = "src\\com\\day7\\source\\testText.text";
         FileOutputStream fileoutputStream = new FileOutputStream(pathName);//自动创建文件不需要手动创建
         //如果在pathName后追加true，就可以在源文件下追加文字
         String str = "hello,world";
@@ -20,7 +20,7 @@ public class FileInputStream_FileOutputStream {
         fileoutputStream.close();
     }
     public void FileInputStream_ () throws IOException{//文件-程序
-        String pathName = "src\\com\\day7\\testText.text";
+        String pathName = "src\\com\\day7\\source\\testText.text";
         FileInputStream fileInputStream = new FileInputStream(pathName); //需要要源文件
 
         int len = 0;
@@ -31,9 +31,9 @@ public class FileInputStream_FileOutputStream {
         fileInputStream.close();
     }
     public void CopyImg() throws IOException{
-        String pathName = "src\\com\\day7\\test_img.png";
+        String pathName = "src\\com\\day7\\source\\test_img.png";
         FileInputStream fileInputStream = new FileInputStream(pathName);//源
-        FileOutputStream fileOutputStream = new FileOutputStream("src\\com\\day7\\test_img1.png");//输入文件
+        FileOutputStream fileOutputStream = new FileOutputStream("src\\com\\day7\\source\\test_img1.png");//输入文件
         int len = 0;
         byte []bytes = new byte[1024];
         while ((len = fileInputStream.read(bytes))!= -1){

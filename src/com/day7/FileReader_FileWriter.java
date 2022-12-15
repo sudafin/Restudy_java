@@ -11,7 +11,7 @@ public class FileReader_FileWriter {
         fileReaderFileWriter.FileReader_();
     }
     public void FileWriter_() throws IOException {
-        String pathName = "src\\com\\day7\\testText1.text";
+        String pathName = "src\\com\\day7\\source\\testText1.text";
         FileWriter fileWriter = new FileWriter(pathName);
         fileWriter.write("可以");
         fileWriter.write("运行文件",0,4);//off表示从哪个文字开始，len表示输入几个文字
@@ -19,7 +19,7 @@ public class FileReader_FileWriter {
         fileWriter.close();
     }
     public void FileReader_() throws IOException{
-        String pathName = "src\\com\\day7\\testText1.text";
+        String pathName = "src\\com\\day7\\source\\testText1.text";
         FileReader fileReader = new FileReader(pathName);
         int len = 0;
         char[] chars = new char[8];

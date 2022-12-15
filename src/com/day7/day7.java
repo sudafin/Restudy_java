@@ -20,12 +20,14 @@ import java.io.File;
  *     File创建文件 File file = new File("path"); file.createNewFile();
  *    1、IO流原理：img_1
  *    2、字节流：  FileInputStream和FileOutputStream：前者是读取文件,后者写入文件 用byte数组接受
- *               FileInputStream_FileOutputStream 缺点：不能写入中文和读出中文
- *    3、字符流：FileReader he FileWriter 前者读取文件 后者写入文件 用char数组接受 FileReader_FileWriter
+ *               FileInputStream_FileOutputStream 缺点：不能写入中文和读出中文，优点可以复制文本和视频，图片
+ *    3、字符流：FileReader 和 FileWriter 前者读取文件 后者写入文件 用char数组接受 FileReader_FileWriter 缺点：不能复制文字、视频和图片
  *    4、节点流和处理流：a、节点流可以从一个特定的数据源  读写   数据，如FileReader和FileWriter、FileInputStream和FileOutputStream；
  *                      这类是访问文件的；也有访问数组和字符串的流ByteArrayInputStream/CharArrayReader、StringReader....
  *                    b、处理流（也叫包装流）“连接”在已存在的流（节点流或处理流）之上，为程序提供更为强大的读写功能，
  *                      如BufferReader，BufferWriter；img_2.png
+ *    5、缓冲流：BufferedReader_BufferedWriter BufferedInputStream_BufferedOutputStream
+ *             特点和上面一样,BufferedReader构造器需要new FileReader，其他也一样可以new Buffer的子类
  * */
 public class day7 {
     public static void main(String[] args) {
