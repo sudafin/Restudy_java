@@ -1,4 +1,9 @@
 package com.day8;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * 网络编程:
  *   1、IP地址：由网络地址+主机地址组成；用于识别网络中的每台计算机和主机
@@ -15,6 +20,15 @@ package com.day8;
  *              socket.getOutputStream()/socket.getInputStream...字符流也行，两台都有这两种方法；
  *              底层是TCP/IP协议
  *    6、服务端/客户端：用OutputStream来发送信息给客户端/服务端，用InputStream来接受客户端/服务端
+ *    7、UDP网络编程（了解）：
  */
 public class day8 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String s = "";
+        while (!s.equals("发送结束")) {
+            s = scanner.next();
+            System.out.println(s);
+        }
+    }
 }

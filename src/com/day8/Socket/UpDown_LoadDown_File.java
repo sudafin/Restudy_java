@@ -1,26 +1,30 @@
 package com.day8.Socket;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class UpDown_LoadDown_File {
     public static void main(String[] args) throws IOException {
-        Socket socket = new Socket(InetAddress.getLocalHost(),8080);
+        Socket socket = new Socket(InetAddress.getLocalHost(),999);
         System.out.println("等待服务端");
-//        SendText sendText = new SendText(socket);
-        SendVideo sendVideo = new SendVideo(socket);
+//        SendText UpText = new SendText(socket);
+//        UpVideo UpVideo = new UpVideo(socket);
+        LoadVideo loadVideo = new LoadVideo(socket);
     }
 }
-class SendText{
-    public SendText(Socket socket) throws IOException {
-        OutputStream outputStream = socket.getOutputStream();//发送文件
-        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
-        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-        String s = ReaderFile();
-        bufferedWriter.write(s);
-        bufferedWriter.flush();
-        bufferedWriter.newLine();
+class UpText{
+    public UpText(@NotNull Socket socket) throws IOException {
+        OutputStream outputStream = socket.getOutputStream();//发送文件的操作
+        OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);//字节流无法处理文字，要转化成字符流
+        BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);//用字符缓冲流
+        String s = ReaderFile();//接受文字的数据用String接受
+        bufferedWriter.write(s);//输出文字
+        bufferedWriter.flush();//输出完毕
+        bufferedWriter.newLine();//发送完毕
         socket.close();
         System.out.println("发送成功");
     }
@@ -44,10 +48,10 @@ class SendText{
         return name;
     }
 }
-class SendVideo{
-    public SendVideo(Socket socket) throws IOException{
+class UpVideo{
+    public UpVideo(Socket socket) throws IOException{
         OutputStream outputStream = socket.getOutputStream();
-        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);
+        BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(outputStream);//用字节缓冲流快一点
         bufferedOutputStream.write(ReaderVideo());
         bufferedOutputStream.flush();
         bufferedOutputStream.close();
@@ -63,5 +67,30 @@ class SendVideo{
         bufferedInputStream.close();
         fileInputStream.close();
         return bytes;
+    }
+}
+class LoadVideo{
+    public LoadVideo(Socket socket) throws IOException{
+        InputStream inputStream = socket.getInputStream();
+        OutputStream outputStream = socket.getOutputStream();
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+        int len;
+        byte[] bytes = new byte[2048];
+        while ((len = bufferedInputStream.read(bytes))!= -1){ //因为服务端没有关掉输入流，就会发生堵塞，所以我们直接把代码弄到到里面来解决问题
+            System.out.println(new String(bytes,0,len));
+            Scanner scanner = new Scanner(System.in);
+            String s = scanner.nextLine();
+            scanner.close();
+            outputStream.write(s.getBytes());
+            socket.shutdownOutput();
+            FileOutputStream fileOutputStream = new FileOutputStream("src\\com\\day8\\source\\DownLoad.mp4");
+            byte[] byte1;
+            byte1 = bufferedInputStream.readAllBytes();
+            fileOutputStream.write(byte1);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            socket.close();
+        }
+
     }
 }
