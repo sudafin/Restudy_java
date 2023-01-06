@@ -2,7 +2,7 @@
 
 ## 1、数据库
 
-   创建数据库：CREATE DATABASE db_name CHARACTER SET utf8;
+`   创建数据库：CREATE DATABASE db_name CHARACTER SET utf8;
             CREATE DATABASE db_name CHARACTER SET utf8 COLLATE utf8_bin;
             CHARACTER SET后面带编码； COLLATE后面带校对规则，如果不加则默认不区分大小写，如果加_bin则区分大小写；
    删除数据库：DROP DATABASE db_name;
@@ -10,8 +10,8 @@
             SHOW CREATE DATABASE db_name; 查看单个创建的数据库
    备份数据库（在命令行执行）：mysqldump -u root -p -B db_name > 目录(I://s.sql)
    恢复数据库：source 目录(得进去mysql里面执行)
-
-## 2、创建表： 
+`
+## 2、创建表：
 
         CREATE TABLE `user1`(
             'id' INT NOT NULL DEFAULT 10, --如果值为NULL则默认值为10
@@ -34,7 +34,8 @@
 
 ## 3、CURD：增删改查 
 
-  ①增：
+ ``
+ ①增：
     INSERT INTO `table_name` (keyName....)
      VALUES(keyName....),
           (keyName....);
@@ -58,9 +59,9 @@
     e、 排序 
         SELECT * FROM table_name
             ORDER BY keyName ASC; --ASC是升序（默认DESC是降序；可以控制两个keyName以上排序，第一个排列完再后一个；
-
+``
 ## 4、常用函数：
-
+`
   ①统计函数：
    a、count:SELECT COUNT(*) FROM table_name --返回满足条件的记录的行数 
             SELECT COUNT(keyName) FROM table_name --返回满足条件的行数，排除NULL的情况
@@ -82,9 +83,9 @@
   ⑤日期函数:Date.png
   ⑥加密函数:pwd.png
   ⑦流程函数:control.png
-
+`
 ## 5、多表
-
+``
    ①查询加强：
     SELECT * FROM table_name
       GROUP BY keyName
@@ -96,5 +97,5 @@
         GROUP BY `Group`,ID,`Name`
             HAVING total > 154
                 ORDER BY `Group` DESC,ID DESC
-                   LIMIT 0,2
+                   LIMIT 0,2``
     
