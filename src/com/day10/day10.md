@@ -79,9 +79,9 @@
     c、avg:SELECT AVG(keyName) FROM table_name --平均数
     d、max/min:SELECT MAX(keyName),MIN(keyName) FROM table_name -- 最高分和最低分
  ### ②分组统计：
-    SELECT keyName....  --通常有2个以上的keyName组成 一个是特定的数据 比如平均值或者max/min，**不能是普通的keyName** 一个是加上特定keyName 比如分组或类别
+    SELECT keyName....  --通常有2个以上的keyName组成,可以是COUNT,平均数....
         FROM table_name
-         GROUP BY keyName  --通过这个类别来进行分组计算特定数据
+         GROUP BY keyName....  --通过SELECT的keyNam来进行分组(SELECT有多少个字段这里也得是多少个)
           HAVING condition; --条件 比如平均值＞？
  ### ③字符串函数：StringFunction.png
         SELECT CONCAT(keyName1," is ",keyName2) FROM table_name --keyName1 is keyName --连接
